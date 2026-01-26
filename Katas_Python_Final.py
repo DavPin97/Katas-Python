@@ -175,7 +175,7 @@ print(resultado)
 try:
     edad = float(input('Introduce tu edad'))
 
-    if edad < 0 and edad > 120:
+    if edad < 0 or edad > 120:
         print('Por favor inserte un numero entre 0 y 120')
     else:
         print('Su edad ha sido introducida correctamente')
@@ -265,7 +265,7 @@ estudiantes = [
 estudiantes_aprobados = list(filter(lambda x:x['calificacion'] >= 90,estudiantes))
 
 for estudiante in estudiantes_aprobados:
-    print(f'El estudiante {estudiante['nombre']} ha obtenido una calificacion de {estudiante['calificacion']}')
+    print(f"El estudiante {estudiante['nombre']} ha obtenido una calificacion de {estudiante['calificacion']}")
 
 #19 Crea una funcion lambda que filtre los numeros impares de una lista dada
 
@@ -450,7 +450,7 @@ Caso de uso:
  6. Retirar la rama situada en la posición 2.
  7. Obtener información sobre el árbol.
 """
-class arbol():
+class Arbol():
     def __init__(self):
         self.tronco = 1
         self.ramas = []
@@ -587,7 +587,7 @@ def eliminar_palabra(texto, palabra_eliminar):
     texto_modificado = ' '.join([palabra for palabra in palabras if palabra != palabra_eliminar])
     return texto_modificado
 
-def procesar_texto(opcion, texto, *args):
+def procesar_texto(texto,opcion, *args):
     if opcion == 'contar':
         return contar_palabras(texto)
     elif opcion == 'reemplazar' and len(args) == 2:
@@ -600,7 +600,7 @@ def procesar_texto(opcion, texto, *args):
         return 'Error: No has ingresado los parámetros válidos para la función deseada.'
     
 texto = 'Las tortugas van despacio y comen rapido'
-print(procesar_texto('contar', texto))
+print(procesar_texto(texto, 'contar'))
 print(procesar_texto('reemplazar', texto, 'tortugas','vacas'))
 print(procesar_texto('eliminar', texto, 'rapido'))
 
@@ -640,11 +640,11 @@ try:
 
     if 0 <= nota_examen <= 69:
         print(f'La nota obtenida en el examen es de {nota_examen} - Insuficiente')
-    elif nota_examen <= 79:
+    elif 70 < nota_examen <= 79:
         print(f'La nota obtenida en el examen es de {nota_examen} - Bien')
-    elif nota_examen <= 89:
+    elif 80 < nota_examen <= 89:
         print(f'La nota obtenida en el examen es de {nota_examen} - Muy bien')
-    elif nota_examen <= 100:
+    elif 90 < nota_examen <= 100:
         print(f'La nota obtenida en el examen es de {nota_examen} - Excelente')
     else:
         raise ValueError('El valor introducido no es valido como nota de examen')
@@ -714,7 +714,7 @@ if activar_descuento == 'si':
     elif descuento_aplicable > precio_articulo:
         print('El descuento no puede ser mayor que el valor del artículo.')
     else:
-        valor_articulo = precio_articulo - descuento_aplicable
+        valor_articulo = round(precio_articulo - descuento_aplicable, 2)
         print(f'El valor final del artículo, después del descuento, es de {valor_articulo} €.')
 
 elif activar_descuento == 'no':
